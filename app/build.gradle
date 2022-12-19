@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "me.cretihoy.marvelcompose"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion composeVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+    // Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Compose
+    implementation 'androidx.activity:activity-compose:1.5.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$composeVersion"
+    debugImplementation "androidx.compose.ui:ui-tooling:$composeVersion"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$composeVersion"
+    implementation "androidx.compose.ui:ui:$composeVersion"
+    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.ui:ui-tooling-preview:$composeVersion"
+    implementation "androidx.compose.material:material-icons-core:$composeIconsVersion"
+    implementation "androidx.compose.material:material-icons-extended:$composeIconsVersion"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-compose:$navVersion"
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltNavigationVersion"
+
+    // Coil
+    implementation "io.coil-kt:coil:$coilVersion"
+    implementation "io.coil-kt:coil-compose:$coilVersion"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    // Inner
+    implementation project(":service")
+    implementation project(":model")
+
+    // Superellipse
+    implementation 'com.github.racra:smooth-corner-rect-android-compose:v1.0.0'
+}

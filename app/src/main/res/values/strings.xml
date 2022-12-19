@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Marvel</string>
+
+    <string name="list_search_button">Go</string>
+
+    <string name="current_characters_title">Characters:</string>
+    <string name="current_comics_title">Comics:</string>
+    <string name="current_creators_title">Creators:</string>
+    <string name="current_description_title">Description:</string>
+    <string name="current_events_title">Events:</string>
+    <string name="current_series_title">Series:</string>
+    <string name="current_stories_title">Stories:</string>
+</resources>
